@@ -5,7 +5,7 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\StudentController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('masuk');
 });
 
 Route::get('/page', [StudentController::class, 'home']);
