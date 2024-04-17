@@ -18,7 +18,7 @@
             <th>NIM</th>
 			<th>Nama</th>
 			<th>Alamat</th>
-			<th>No Telepon</th>
+			<th>Program studi</th>
 			<th>IPK</th>
 			<th>Opsi</th>
 		</tr>
@@ -27,7 +27,7 @@
             <td>{{ $mhs->nim }}</td>
 			<td>{{ $mhs->nama }}</td>
 			<td>{{ $mhs->alamat }}</td>
-			<td>{{ $mhs->notelp }}</td>
+			<td>{{ $mhs->prodi }}</td>
 			<td>{{ $mhs->ipk }}</td>
 			<td>
 				<a href="/student/edit/{{ $mhs->nim }}">Edit</a>
@@ -37,6 +37,8 @@
 		</tr>
 		@endforeach
 	</table>
+	<br>
+	<a href="/"> < Back</a>
  
  
 </body>
