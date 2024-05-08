@@ -13,7 +13,7 @@
 	<br/>
 	<br/>
  
-	<form action="/student/save" method="post">
+	<form action="/student/addsave" method="post">
 		{{ csrf_field() }}
 		Nama <input type="text" name="nama" required="required"> <br/>
 		Alamat <textarea name="alamat" required="required"></textarea> <br/>
