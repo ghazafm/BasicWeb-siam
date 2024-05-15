@@ -34,7 +34,7 @@
 			<th>NIM</th>
 			<th>Nama</th>
 			<th>Alamat</th>
-			<th>No Telepon</th>
+			<th>Program Studi</th>
 			<th>IPK</th>
 			<th>Opsi</th>
 		</tr>
