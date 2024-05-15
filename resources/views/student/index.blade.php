@@ -62,4 +62,6 @@
 	{{ $mahasiswa->links('pagination::bootstrap-4') }}
 </body>
 
+<a class="btn btn-warning btn-sm" href="/">Back</a>
+
 </html>
