@@ -7,17 +7,16 @@ use Illuminate\Support\Facades\DB;
 
 class StudentController extends Controller
 {
-    public function index()
-    {
-    	// mengambil data dari table mahasiswa
-    	$mahasiswa = DB::table('mahasiswa')->get();
- 
-    	// mengirim data mahasiswa ke view index
-    	return view('student.index',['mahasiswa' => $mahasiswa]);
- 
-    }
+	public function index()
+	{
+		// mengambil data dari table mahasiswa
+		$mahasiswa = DB::table('mahasiswa')->paginate(10);
 
-	public function add() 
+		// mengirim data mahasiswa ke view index
+		return view('student.index', ['mahasiswa' => $mahasiswa]);
+	}
+
+	public function add()
 	{
 		return view('student.add');
 	}
@@ -38,15 +37,15 @@ class StudentController extends Controller
 	public function edit($nim)
 	{
 		// mengambil data mahasiwa berdasarkan nim yang dipilih
-		$mahasiswa = DB::table('mahasiswa')->where('nim',$nim)->get();
+		$mahasiswa = DB::table('mahasiswa')->where('nim', $nim)->get();
 		// mengirim data mahasiwa yang didapat ke view edit.blade.php
-		return view('student.edit',['mahasiswa' => $mahasiswa]);
+		return view('student.edit', ['mahasiswa' => $mahasiswa]);
 	}
 
 	public function editsave(Request $req)
 	{
 		// update data mahasiswa
-		DB::table('mahasiswa')->where('nim',$req->nim)->update([
+		DB::table('mahasiswa')->where('nim', $req->nim)->update([
 			'nama' => $req->nama,
 			'alamat' => $req->alamat,
 			'prodi' => $req->prodi,
@@ -61,5 +60,15 @@ class StudentController extends Controller
 		DB::table('mahasiswa')->where('nim', $nim)->delete();
 
 		return redirect('student');
+	}
+
+	public function search(Request $req){
+		$search = $req->search;
+		
+		$mahasiswa = DB::table('mahasiswa')
+		->where('nama','like','%'.$search.'%')
+		->paginate();
+
+		return view('student.index', ['mahasiswa'=> $mahasiswa]);
 	}
 }
