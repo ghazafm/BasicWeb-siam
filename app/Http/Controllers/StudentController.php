@@ -62,13 +62,14 @@ class StudentController extends Controller
 		return redirect('student');
 	}
 
-	public function search(Request $req){
+	public function search(Request $req)
+	{
 		$search = $req->search;
-		
-		$mahasiswa = DB::table('mahasiswa')
-		->where('nama','like','%'.$search.'%')
-		->paginate();
 
-		return view('student.index', ['mahasiswa'=> $mahasiswa]);
+		$mahasiswa = DB::table('mahasiswa')
+			->where('nama', 'like', '%' . $search . '%')
+			->paginate();
+
+		return view('student.index', ['mahasiswa' => $mahasiswa]);
 	}
 }
